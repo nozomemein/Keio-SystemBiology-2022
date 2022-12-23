@@ -8,7 +8,7 @@ class Coding
     @gray_codings = {}
   end
 
-  def return_binray_codings
+  def return_binary_codings
     for i in 0...@@gtype_length do
       binary =  i.to_s(2).rjust(@@gene_length,'0').reverse
       phenotype_value = @@xmin + i * ((@@xmax-@@xmin).to_f/2**@@gene_length)
@@ -20,15 +20,15 @@ class Coding
 
   def return_gray_codings
     for i in 0...@@gtype_length do
-      binray = @binary_codings.keys[i]
+      binary = @binary_codings.keys[i]
       gray = ""
       for k in 0...@@gene_length do
-        binary_k1 = binray[k].to_i #0 or 1 のinteger
-        binary_k2 = binray[k+1].to_i
+        binary_k1 = binary[k].to_i #0 or 1 のinteger
+        binary_k2 = binary[k+1].to_i
         unless k == @@gene_length - 1 then
           gray << (binary_k1 ^ binary_k2).to_s
         else
-          gray << binray[k]
+          gray << binary[k]
         end
       end
       @gray_codings[gray] = @binary_codings[@binary_codings.keys[i]]

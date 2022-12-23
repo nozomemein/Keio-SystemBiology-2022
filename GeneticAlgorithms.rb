@@ -6,13 +6,13 @@ class GeneticAlgorithm
 
     @coding_table = coding_table
 
-    @inital_group = []
+    @initial_group = []
     @cost_array_history = []
     @group_history = []
 
     initial_production()
     puts "\n"+"Initial group".center(100,"-")
-    p @inital_group
+    p @initial_group
   end
 
   def ga_flow()
@@ -20,8 +20,8 @@ class GeneticAlgorithm
     step_group = []
     for i in 0..@@generation-1 do 
       if i == 0
-        cost_array= calculate_cost(@inital_group)
-        step_group = reproduction(group:@inital_group, cost_array:cost_array)
+        cost_array= calculate_cost(@initial_group)
+        step_group = reproduction(group:@initial_group, cost_array:cost_array)
         puts "\n"+"InitialCost".center(100,"-")
         p cost_array
       else
@@ -46,7 +46,7 @@ class GeneticAlgorithm
     def initial_production
       for i in 0..@@sample_num-1 do
         random = Random.new().rand(0..@@gtype_length-1)
-        @inital_group.push @coding_table.keys[random]    
+        @initial_group.push @coding_table.keys[random]
       end    
     end
 
@@ -137,8 +137,4 @@ class GeneticAlgorithm
       end
       return group_return_list
     end
-  
-
-
-
 end
